@@ -1,7 +1,7 @@
 :root{--bg:#fff6f0;--card:#fff;--ink:#4a2f3a;--mute:#9a7b87;--pink:#f08fae;--soft:#fde3ec;--ok:#6cc49a;--bad:#e8837f;--line:#f4d3de}
 :root[data-theme=dark]{--bg:#1f1519;--card:#2a1d23;--ink:#fbe8ef;--mute:#b79aa6;--soft:#3a2630;--line:#4a3039}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.5 "Nunito","Noto Sans KR",system-ui,sans-serif;overscroll-behavior:none}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.5 "Gowun Dodum","Noto Sans KR",system-ui,sans-serif;overscroll-behavior:none}
 #splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:24px;background:linear-gradient(160deg,#fde3ec,#fff6f0)}
 #splash h1{margin:0;font-size:2.4rem;color:#a14663}#splash p{margin:0 0 16px;color:#8a5a6b}.logo{font-size:5rem}
 [hidden]{display:none!important}
@@ -27,7 +27,13 @@ nav button b{display:block;font-size:1.3rem}nav button.on{color:var(--pink);font
 .mem{aspect-ratio:1;font-size:1rem;padding:2px}input{width:100%;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin:6px 0}
 canvas{width:100%;max-width:320px;aspect-ratio:1;background:var(--card);border:2px dashed var(--line);border-radius:18px;touch-action:none;display:block;margin:auto}
 .chat p{margin:6px 0;padding:8px 12px;border-radius:14px;background:var(--soft)}.chat p.me{background:var(--pink);color:#fff;margin-left:30%}
-@media(min-width:900px){#app{flex-direction:row}nav{flex-direction:column;width:200px;border-top:0;border-right:1px solid var(--line);padding:20px 10px}nav button{text-align:left;font-size:1rem;border-radius:12px}nav button b{display:inline;margin-right:8px}main{padding:24px}}
+@media(min-width:900px){nav{display:none}.homebtn{display:inline-block!important}main{max-width:980px;padding:24px}.boxes{grid-template-columns:repeat(3,1fr)!important}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 img.pic{height:1.2em;width:auto;vertical-align:middle;object-fit:contain}
 .w i img{height:56px}.big img{height:96px}.opt img{height:40px}
+
+h1,h2,h3,.big,.btn,.ghost,nav button,.box,#hdr{font-family:"Jua","Gowun Dodum","Noto Sans KR",system-ui,sans-serif;font-weight:400}
+.homebtn{display:none}
+.boxes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.box{background:linear-gradient(160deg,var(--soft),var(--card));border:1px solid var(--line);border-radius:22px;padding:20px 10px;text-align:center;color:var(--ink);cursor:pointer;transition:transform .15s}
+.box:hover{transform:translateY(-3px)}.box i{font-style:normal;font-size:2.6rem;display:block}.box b{font-size:1.2rem;font-weight:400}.box small{display:block}

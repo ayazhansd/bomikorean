@@ -18,7 +18,7 @@ const save=()=>localStorage.setItem('bomi',JSON.stringify(S));
 const day=d=>new Date(d).toISOString().slice(0,10);
 const lvl=()=>Math.floor(S.xp/100)+1;
 function addXP(n){const t=day(Date.now());if(S.last!==t){const gap=S.last?Math.round((new Date(t)-new Date(S.last))/864e5):1;if(gap===1)S.streak++;else if(gap===2&&S.freezes>0){S.freezes--;S.streak++}else S.streak=1;S.last=t}S.xp+=n;save();hdr()}
-const hdr=()=>$('#hdr').innerHTML=`<span>🔥 ${S.streak}</span><span>🧊 ${S.freezes}</span><span>✨ ${S.xp} XP</span><span>⭐ Lv ${lvl()}</span>`;
+const hdr=()=>$('#hdr').innerHTML=`${tab!=='home'?'<button class="ghost homebtn" onclick="go(\'home\')">🏠 Home</button>':''}<span>🔥 ${S.streak}</span><span>🧊 ${S.freezes}</span><span>✨ ${S.xp} XP</span><span>⭐ Lv ${lvl()}</span>`;
 function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ko-KR';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
 const beep=()=>{try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=660;o.start();o.stop(a.currentTime+.5)}catch(e){}};
 function theme(){const t=S.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}
@@ -28,6 +28,7 @@ function go(t){tab=t||tab;$('#nav').innerHTML=TABS.map(([k,i,l])=>`<button class
 function gate(fn){if(S.user)return fn();V().innerHTML=`<div class=card><h2>Create a free account 🌸</h2><p>Games, Hangul Lab and your word list need an account so your progress is saved.</p><input id=nm placeholder="Your name"><button class=btn id=ok>Save and continue</button></div>`;$('#ok').onclick=()=>{const n=$('#nm').value.trim();if(!n)return;S.user=n;save();fn()}}
 function home(){const now=new Date(),nx=HOL.find(h=>new Date(h[0])>=now.setHours(0,0,0,0))||HOL[0],dd=Math.ceil((new Date(nx[0])-new Date())/864e5),mt=MOTTO[Math.floor(Date.now()/864e5)%MOTTO.length],m=MODS[0],p=pct(m);
 V().innerHTML=`<h2>안녕${S.user?', '+S.user:''}! 🌸</h2><p class=mute>${new Date().toLocaleDateString('en',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</p>
+<div class=boxes>${[['go(\'lessons\')','📖','Lessons','3 modules · 60 words'],['go(\'games\')','🎮','Games','16 mini-games'],['go(\'lessons\');lessons(\'ai\')','✨','AI teacher','Ask about Korean'],['play(\'talk\')','🐻','Komdori','Voice chat'],['play(\'trace\')','✍️','Hangul lab','Trace letters'],['go(\'profile\')','👤','Profile','Level '+lvl()]].map(b=>`<button class=box onclick="${b[0]}"><i>${b[1]}</i><b>${b[2]}</b><small>${b[3]}</small></button>`).join('')}</div>
 <div class=card><small>Soon in Korea</small><h3>${nx[1]} — ${dd} days</h3><details><summary>Traditions</summary>${nx[2]}</details></div>
 <div class=card><div class=row><h3>⏱️ Focus timer</h3><b id=tm>25:00</b></div><button class=btn id=ts>Start 25 min</button> <small>+20 XP when done</small></div>
 <div class=card><small>My path</small><h3>${m.e} ${m.t}</h3><div class=bar><div style="width:${p}%"></div></div><p class=mute>${p}% complete</p><button class=btn onclick="openMod(0)">Continue</button></div>
