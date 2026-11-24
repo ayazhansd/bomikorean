@@ -1,0 +1,33 @@
+:root{--bg:#fff6f0;--card:#fff;--ink:#4a2f3a;--mute:#9a7b87;--pink:#f08fae;--soft:#fde3ec;--ok:#6cc49a;--bad:#e8837f;--line:#f4d3de}
+:root[data-theme=dark]{--bg:#1f1519;--card:#2a1d23;--ink:#fbe8ef;--mute:#b79aa6;--soft:#3a2630;--line:#4a3039}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.5 "Nunito","Noto Sans KR",system-ui,sans-serif;overscroll-behavior:none}
+#splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:24px;background:linear-gradient(160deg,#fde3ec,#fff6f0)}
+#splash h1{margin:0;font-size:2.4rem;color:#a14663}#splash p{margin:0 0 16px;color:#8a5a6b}.logo{font-size:5rem}
+[hidden]{display:none!important}
+#app{display:flex;flex-direction:column-reverse;height:100%;padding-top:env(safe-area-inset-top)}
+main{flex:1;overflow:auto;padding:12px 14px 20px;max-width:760px;width:100%;margin:0 auto}
+nav{display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;border:0;background:none;color:var(--mute);padding:10px 4px;font:inherit;font-size:.8rem;cursor:pointer}
+nav button b{display:block;font-size:1.3rem}nav button.on{color:var(--pink);font-weight:700}
+#hdr{display:flex;gap:8px;justify-content:space-between;background:var(--soft);border-radius:16px;padding:8px 12px;margin-bottom:12px;font-weight:700;font-size:.9rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px}
+.card h2,.card h3{margin:0 0 6px}.big{font-size:2.6rem;text-align:center;margin:10px 0}small,.mute{color:var(--mute)}
+.btn{background:var(--pink);color:#fff;border:0;border-radius:14px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer}
+.ghost{background:var(--soft);color:var(--ink);border:0;border-radius:12px;padding:8px 12px;font:inherit;cursor:pointer}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.opt{background:var(--soft);border:2px solid transparent;border-radius:14px;padding:12px;font:inherit;font-size:1.05rem;color:var(--ink);cursor:pointer}
+.opt.ok{border-color:var(--ok);background:#dff5e9;color:#234}.opt.bad{border-color:var(--bad);background:#fde0df;color:#432}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.w{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;text-align:center;cursor:pointer}
+.w i{font-style:normal;font-size:2rem;display:block}.w b{font-size:1.1rem}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.bar{height:8px;background:var(--soft);border-radius:8px;overflow:hidden}.bar div{height:100%;background:var(--pink)}
+.tabs{display:flex;gap:6px;overflow:auto;margin-bottom:10px}.tabs .ghost.on{background:var(--pink);color:#fff}
+.mem{aspect-ratio:1;font-size:1rem;padding:2px}input{width:100%;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin:6px 0}
+canvas{width:100%;max-width:320px;aspect-ratio:1;background:var(--card);border:2px dashed var(--line);border-radius:18px;touch-action:none;display:block;margin:auto}
+.chat p{margin:6px 0;padding:8px 12px;border-radius:14px;background:var(--soft)}.chat p.me{background:var(--pink);color:#fff;margin-left:30%}
+@media(min-width:900px){#app{flex-direction:row}nav{flex-direction:column;width:200px;border-top:0;border-right:1px solid var(--line);padding:20px 10px}nav button{text-align:left;font-size:1rem;border-radius:12px}nav button b{display:inline;margin-right:8px}main{padding:24px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+img.pic{height:1.2em;width:auto;vertical-align:middle;object-fit:contain}
+.w i img{height:56px}.big img{height:96px}.opt img{height:40px}
